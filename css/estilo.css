@@ -1,0 +1,14 @@
+* {
+    padding: 0px;
+    margin: 0px;}
+
+body {
+    background-color: #f5efeb; }
+
+nav {
+    background-color: #33272D;
+}
+.logoNav , .carrito{
+    height: 35px;
+    margin: 5px 10px;
+}
