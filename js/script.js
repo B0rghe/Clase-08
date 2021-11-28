@@ -37,7 +37,7 @@ productos.push(new Articulo(4, "pelota 65cm", "pilates", 1089.50, 8, "img/pelota
 
 for (const producto of productos){
     let contProd = document.createElement("div");
-    contProd.setAttribute("name", `producto${producto.codigo}`)
+    contProd.setAttribute("id", `producto${producto.codigo}`)
     contProd.innerHTML = `
         <h3>${producto.titulo}</h3>
         <p>Precio: ${producto.precio}</p>
