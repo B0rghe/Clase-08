@@ -1,10 +1,21 @@
+const categorias = ["YOGA", "PILATES", "MEDITACION", "TODO 🛒"]
+
+const listaCat = document.getElementById("categorias")
+
+for (const categoria of categorias){
+    let li = document.createElement("li");
+    li.innerHTML = categoria;
+    listaCat.appendChild(li);
+}
+
 class Articulo {
-    constructor(codigo, titulo, categoria, precio, stock) {
+    constructor(codigo, titulo, categoria, precio, stock, img) {
         this.codigo = parseInt(codigo);
         this.titulo = titulo.toUpperCase();
         this.categoria = categoria.toUpperCase();
         this.precio = parseFloat(precio);
         this.stock = parseInt(stock);
+        this.img = img.toLowerCase();
         this.oferta = false;
         this.vendidos = 0;
     }
@@ -18,10 +29,23 @@ class Articulo {
     }
 }
 const productos = [];
-productos.push(new Articulo(1, "mat 6mm", "yoga", 2300.00, 10));
-productos.push(new Articulo(2, "mat 8mm", "yoga", 2889.99, 6));
-productos.push(new Articulo(3, "pelota 85cm", "pilates", 1380.00, 8));
-productos.push(new Articulo(4, "pelota 65cm", "pilates", 1089.50, 8));
+productos.push(new Articulo(1, "mat 6mm", "yoga", 2300.00, 10, "img/mat6.png"));
+productos.push(new Articulo(2, "mat 8mm", "yoga", 2889.99, 6, "img/mat8.png"));
+productos.push(new Articulo(3, "pelota 85cm", "pilates", 1380.00, 8, "img/pelota85.png"));
+productos.push(new Articulo(4, "pelota 65cm", "pilates", 1089.50, 8, "img/pelota65.png"));
+
+
+for (const producto of productos){
+    let contProd = document.createElement("div");
+    contProd.setAttribute("name", `producto${producto.codigo}`)
+    contProd.innerHTML = `
+        <h3>${producto.titulo}</h3>
+        <p>Precio: ${producto.precio}</p>
+        <p>Stock: ${producto.stock}</p>
+        <img src="${producto.img}" heigth="200px">
+    `;
+    document.getElementById("articulos").appendChild(contProd);
+}
 
 alert("Lista de Artículos:\n" + productos[0].codigo + " - " + productos[0].titulo + " - $" + productos[0].precio
                        + "\n" + productos[1].codigo + " - " + productos[1].titulo + " - $" + productos[1].precio
@@ -56,3 +80,4 @@ function buscar(producto) {
     return producto.categoria === 'MAT 8MM';
 }
 console.log(productos.find(buscar));
+
